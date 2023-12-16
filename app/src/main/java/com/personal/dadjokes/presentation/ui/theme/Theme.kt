@@ -1,4 +1,4 @@
-package com.personal.dadjokes.ui.theme
+package com.personal.dadjokes.presentation.ui.theme
 
 import android.app.Activity
 import android.graphics.Color
