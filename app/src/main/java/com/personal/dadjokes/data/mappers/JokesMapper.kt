@@ -1,13 +1,12 @@
 package com.personal.dadjokes.data.mappers
 
 import com.personal.dadjokes.data.remote.JokeDto
-import com.personal.dadjokes.data.remote.JokesDto
 import com.personal.dadjokes.domain.joke.Joke
 import com.personal.dadjokes.domain.joke.JokesInfo
 
-fun JokesDto.toJokesInfo(): JokesInfo {
+fun List<JokeDto>.toJokesInfo(): JokesInfo {
     return JokesInfo(
-        jokes = jokes.map {
+        jokes = this.map {
             it.toJoke()
         }
     )

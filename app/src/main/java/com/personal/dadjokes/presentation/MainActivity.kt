@@ -8,13 +8,18 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import com.personal.dadjokes.DadJokesApplication
 import com.personal.dadjokes.presentation.ui.screens.JokeScreen
 import com.personal.dadjokes.presentation.ui.theme.DadJokesTheme
 import com.personal.dadjokes.presentation.ui.theme.md_theme_light_onSurface
 
 class MainActivity : ComponentActivity() {
 
-    private val mainViewModel: MainViewModel by viewModels()
+    private val mainViewModel: MainViewModel by viewModels {
+        viewModelFactory {
+            MainViewModel(DadJokesApplication.appModule.jokesRepository)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
@@ -25,7 +30,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = md_theme_light_onSurface
                 ) {
-                    JokeScreen()
+                    JokeScreen(
+                        uiEvent = mainViewModel::uiEvent,
+                        jokesState = mainViewModel::jokesState
+                    )
                 }
             }
         }

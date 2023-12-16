@@ -8,5 +8,5 @@ interface JokesApi {
     @GET("v1/dadjokes?limit=1")
     suspend fun getJokes(
         @Header("X-Api-Key") apiKey: String = BuildConfig.API_KEY
-    ): JokesDto
+    ): List<JokeDto>
 }

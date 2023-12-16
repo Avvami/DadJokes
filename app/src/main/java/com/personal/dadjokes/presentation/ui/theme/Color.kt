@@ -1,6 +1,8 @@
 package com.personal.dadjokes.presentation.ui.theme
 import androidx.compose.ui.graphics.Color
 
+val coralPink = Color(0xFFF6B8AB)
+
 val md_theme_light_primary = Color(0xFF874589)
 val md_theme_light_onPrimary = Color(0xFFFFFFFF)
 val md_theme_light_primaryContainer = Color(0xFFFFD6FA)
