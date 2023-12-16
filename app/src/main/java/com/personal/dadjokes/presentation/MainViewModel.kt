@@ -8,6 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.personal.dadjokes.domain.joke.JokesInfo
 import com.personal.dadjokes.domain.repository.JokesRepository
 import com.personal.dadjokes.domain.util.Resource
+import com.personal.dadjokes.domain.util.getCurrentDateTime
+import com.personal.dadjokes.domain.util.toString
 import kotlinx.coroutines.launch
 
 class MainViewModel(
@@ -16,6 +18,8 @@ class MainViewModel(
 
     var jokesState by mutableStateOf(JokesState())
         private set
+
+    var currentDate = getCurrentDateTime().toString("MMM d, yyyy")
 
     private fun getJokes() {
         viewModelScope.launch {
