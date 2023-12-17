@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Dad Jokes</string>
+    <string name="time">%s:%s</string>
 </resources>

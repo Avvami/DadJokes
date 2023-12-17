@@ -33,7 +33,9 @@ class MainActivity : ComponentActivity() {
                     JokeScreen(
                         uiEvent = mainViewModel::uiEvent,
                         jokesState = mainViewModel::jokesState,
-                        currentDate = mainViewModel.currentDate
+                        currentDate = mainViewModel.currentDate,
+                        notificationsEnabled = mainViewModel::notificationsEnabled,
+                        notificationTimeState = mainViewModel::notificationTime
                     )
                 }
             }

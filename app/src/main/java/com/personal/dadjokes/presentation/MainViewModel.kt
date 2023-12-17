@@ -16,10 +16,16 @@ class MainViewModel(
     private val jokesRepository: JokesRepository
 ): ViewModel() {
 
+    var notificationTime by mutableStateOf(NotificationTimeState(14, 0))
+        private set
+
     var jokesState by mutableStateOf(JokesState())
         private set
 
     var currentDate = getCurrentDateTime().toString("MMM d, yyyy")
+
+    var notificationsEnabled by mutableStateOf(false)
+        private set
 
     private fun getJokes() {
         viewModelScope.launch {
@@ -53,6 +59,13 @@ class MainViewModel(
     fun uiEvent(event: UiEvent) {
         when(event) {
             UiEvent.GetJokes -> { getJokes() }
+            is UiEvent.SetNotifications -> { notificationsEnabled = event.receive }
+            is UiEvent.SetNotificationTime -> {
+                notificationTime = notificationTime.copy(
+                    hour = event.hour,
+                    minute = event.minute
+                )
+            }
         }
     }
 }
